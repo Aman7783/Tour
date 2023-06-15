@@ -1,89 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Portfolio Website</title>
-    <link rel="icon" type="image/jpg" href="..//Portfolio website/akshay kumar icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>word counter</title>
     <style>
-        html,body{
+        body{
+            padding: 0px 100px;
+        }
+        h1{
+            text-align: center;
+            background-color: #0067B0;
+            color: white;
+            padding: 10px;
             margin: 0;
-            height: 100%;
-            font-family: Arial, Helvetica, sans-serif;
         }
-        .topnav{
-            overflow: hidden;
-            background-color: #333;
-        }
-        .topnav a{
-            float: left;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 15px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-        .topnav a:hover{
-            background-color: #ddd;
-            color: black;
-        }
-        .topnav a.active{
-            background-color: #04AA6D;
-            color: white;
-        }
-        .hero-image{
-            background-image: url("akshay.jpg");
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-        }
-        .hero-text{
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            color: white;
-        }
-        .footer{
-            left: 0;
-            bottom: 0;
+        #textbox{
             width: 100%;
-            background-color: red;
-            animation-name: example;
-            animation-duration: 5s;
-            animation-iteration-count: infinite;
-            color: white;
-            text-align: center;
+            border-color: #0067B0;
+            font-size: 15px;
         }
-        @keyframes example{
-                from{background-color: red;}
-                to{background-color: yellow;}
+        p{
+            text-align: center;
+            background-color: #0067B0;
+            font-size:  25px;
+            font-weight: bold;
+            color: white;
+            padding: 10px;
+            margin: 0px;
         }
     </style>
 </head>
 <body>
-    <div>
-        <img src="./akshay logo.png" height="300px"></img>
-    </div>
-    <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="work.html">work Experience</a>
-        <a href="contact.html">Contact</a>
-    </div>
-    <div class="hero-image">
-        <div class="hero-text">
-            <h1 style="font-size: 50px">I am Akshay Kumar</h1>
-            <p>and i am hero</p>
+    <h1>Word and character counter</h1>
+    <textarea id="textbox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> words and 
+        <span id="char">0</span> characters
+    </p>
+    <script>
+        let textbox = document.getElementById("textbox");
 
-        </div>
+        textbox.addEventListener('input',function(){
+           var text = this.value;
+           let char = text.length;
+           document.getElementById("char").innerHTML = char;
 
-    </div>
-    <div class="footer">
-        <p>Footer</p>
-        <p>This Website made by Aman Thakur</p>
-
-    </div>
+           text = text.trim();
+           let words = text.split(" ");
+           let cleanList = words.filter(function(elm){
+               return elm != "";
+           });
+           document.getElementById("word").innerHTML = cleanList.length;
+        });
+    </script>
 </body>
 </html>
